@@ -1,67 +1,67 @@
 <?php
 error_reporting(0);
 header("Refresh:15;url=cache/" . getSubstr($_FILES["file"]["name"],'','.res') . ".zip");
-// è‡ªé€‚åº”å¸ƒå±€ echo "<meta name="\"viewport"\" content="\"width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"\">"
+// ×ÔÊÊÓ¦²¼¾Ö echo "<meta name="\"viewport"\" content="\"width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"\">"
 $allowedExts = array("res");
 $temp = explode(".", $_FILES["file"]["name"]);
 echo $_FILES["file"]["size"];
-$extension = end($temp);     // è·å–æ–‡ä»¶åç¼€å
+$extension = end($temp);     // »ñÈ¡ÎÄ¼şºó×ºÃû
 if ((($_FILES["file"]["type"] == "text/plain")
 || ($_FILES["file"]["type"] == "application/octet-stream")
 || ($_FILES["file"]["type"] == "image/jpg")
 || ($_FILES["file"]["type"] == "image/pjpeg")
 || ($_FILES["file"]["type"] == "image/x-png")
 || ($_FILES["file"]["type"] == "image/png"))
-&& ($_FILES["file"]["size"] < 2*1024*1024)   // å°äº 2MB
+&& ($_FILES["file"]["size"] < 2*1024*1024)   // Ğ¡ÓÚ 2MB
 && in_array($extension, $allowedExts))
 {
     if ($_FILES["file"]["error"] > 0)
     {
-        echo "é”™è¯¯ï¼š: " . $_FILES["file"]["error"] . "<br>";
+        echo "´íÎó£º: " . $_FILES["file"]["error"] . "<br>";
     }
     else
     {
-        echo "ä¸Šä¼ æ–‡ä»¶å: " . $_FILES["file"]["name"] . "<br>";
-        echo "æœåŠ¡å™¨æ­£åœ¨å¤„ç†ä½ çš„æ–‡ä»¶ï¼Œç¨åä¼šè‡ªåŠ¨ä¸‹è½½zipå‹ç¼©åŒ…ï¼" . "<br>";
+        echo "ÉÏ´«ÎÄ¼şÃû: " . $_FILES["file"]["name"] . "<br>";
+        echo "·şÎñÆ÷ÕıÔÚ´¦ÀíÄãµÄÎÄ¼ş£¬ÉÔºó»á×Ô¶¯ÏÂÔØzipÑ¹Ëõ°ü£¡" . "<br>";
         
 		
         
         
-        // åˆ¤æ–­å½“æœŸç›®å½•ä¸‹çš„ upload ç›®å½•æ˜¯å¦å­˜åœ¨è¯¥æ–‡ä»¶
-        // å¦‚æœæ²¡æœ‰ upload ç›®å½•ï¼Œä½ éœ€è¦åˆ›å»ºå®ƒï¼Œupload ç›®å½•æƒé™ä¸º 777
+        // ÅĞ¶Ïµ±ÆÚÄ¿Â¼ÏÂµÄ upload Ä¿Â¼ÊÇ·ñ´æÔÚ¸ÃÎÄ¼ş
+        // Èç¹ûÃ»ÓĞ upload Ä¿Â¼£¬ÄãĞèÒª´´½¨Ëü£¬upload Ä¿Â¼È¨ÏŞÎª 777
         if (file_exists("upload/" . $_FILES["file"]["name"]))
         {
-            echo $_FILES["file"]["name"] . " æ–‡ä»¶å·²ç»å­˜åœ¨ã€‚ ";
+            echo $_FILES["file"]["name"] . " ÎÄ¼şÒÑ¾­´æÔÚ¡£ ";
         }
         else
         {
-            // å¦‚æœ upload ç›®å½•ä¸å­˜åœ¨è¯¥æ–‡ä»¶åˆ™å°†æ–‡ä»¶ä¸Šä¼ åˆ° upload ç›®å½•ä¸‹
+            // Èç¹û upload Ä¿Â¼²»´æÔÚ¸ÃÎÄ¼şÔò½«ÎÄ¼şÉÏ´«µ½ upload Ä¿Â¼ÏÂ
             move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
-            echo "æ–‡ä»¶å­˜å‚¨åœ¨: " . "upload/" . $_FILES["file"]["name"];
+            echo "ÎÄ¼ş´æ´¢ÔÚ: " . "upload/" . $_FILES["file"]["name"];
 			echo "<br>";
-			echo "è¯·è€å¿ƒç­‰å¾…çº¦15ç§’<br>";
+			echo "ÇëÄÍĞÄµÈ´ıÔ¼15Ãë<br>";
         }
     }
 }
 else
 {
-    echo "éæ³•çš„æ–‡ä»¶æ ¼å¼";
+    echo "·Ç·¨µÄÎÄ¼ş¸ñÊ½";
 	echo $_FILES["file"]["type"];
 }
 getSubstr($_FILES["file"]["name"],'','.res');
  
-/*ä»¥ä¸‹æ˜¯å–ä¸­é—´æ–‡æœ¬çš„å‡½æ•° 
-  getSubstr=è°ƒç”¨åç§°
-  $str=é¢„å–å…¨æ–‡æœ¬ 
-  $leftStr=å·¦è¾¹æ–‡æœ¬
-  $rightStr=å³è¾¹æ–‡æœ¬
+/*ÒÔÏÂÊÇÈ¡ÖĞ¼äÎÄ±¾µÄº¯Êı 
+  getSubstr=µ÷ÓÃÃû³Æ
+  $str=Ô¤È¡È«ÎÄ±¾ 
+  $leftStr=×ó±ßÎÄ±¾
+  $rightStr=ÓÒ±ßÎÄ±¾
 */
 function getSubstr($str, $leftStr, $rightStr)
 {
     $left = strpos($str, $leftStr);
-    //echo 'å·¦è¾¹:'.$left;
+    //echo '×ó±ß:'.$left;
     $right = strpos($str, $rightStr,$left);
-    //echo '<br>å³è¾¹:'.$right;
+    //echo '<br>ÓÒ±ß:'.$right;
     if($left < 0 or $right < $left) return '';
     return substr($str, $left + strlen($leftStr), $right-$left-strlen($leftStr));
 }
