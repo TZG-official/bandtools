@@ -1,69 +1,110 @@
-<?php
-error_reporting(0);
-header("Refresh:10;url=cache/" . getSubstr($_FILES["file"]["name"],'','.zip') . "_packed.res");
-// ×ÔÊÊÓ¦²¼¾Ö echo "<meta name="\"viewport"\" content="\"width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"\">"
-$allowedExts = array("zip");
-$temp = explode(".", $_FILES["file"]["name"]);
-echo $_FILES["file"]["size"];
-$extension = end($temp);     // »ñÈ¡ÎÄ¼şºó×ºÃû
-if ((($_FILES["file"]["type"] == "application/zip")
-|| ($_FILES["file"]["type"] == "application/zip")
-|| ($_FILES["file"]["type"] == "application/x-zip-compressed")
-|| ($_FILES["file"]["type"] == "image/jpg")
-|| ($_FILES["file"]["type"] == "image/pjpeg")
-|| ($_FILES["file"]["type"] == "image/x-png")
-|| ($_FILES["file"]["type"] == "image/png"))
-&& ($_FILES["file"]["size"] < 2*1024*1024)   // Ğ¡ÓÚ 2MB
-&& in_array($extension, $allowedExts))
-{
-    if ($_FILES["file"]["error"] > 0)
-    {
-        echo "´íÎó£º: " . $_FILES["file"]["error"] . "<br>";
-    }
-    else
-    {
-        echo "ÉÏ´«ÎÄ¼şÃû: " . $_FILES["file"]["name"] . "<br>";
-        echo "·şÎñÆ÷ÕıÔÚ´¦ÀíÄãµÄÎÄ¼ş£¬ÉÔºó»á×Ô¶¯ÏÂÔØzipÑ¹Ëõ°ü£¡" . "<br>";
-        
+ï»¿<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="renderer" content="webkit">
+		<meta name="theme-color" content="#3F51B5" />
+		<title>ç±³ç¯äº¤æµä¼š - RESåç¼–è¯‘å·¥å…·</title>
+		<link href="https://cdn.bootcss.com/mdui/0.4.2/css/mdui.min.css" rel="stylesheet">
+	</head>
+
+	<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+		<header class="mdui-appbar mdui-appbar-fixed">
+			<div class="mdui-toolbar mdui-color-theme">
+				<span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#main-drawer', swipe: true}"><i class="mdui-icon material-icons">menu</i></span>
+				<a href="https://rmpai.com" target="_blank" class="mdui-typo-headline mdui-hidden-xs">ç±³ç¯äº¤æµä¼š - RESåç¼–è¯‘å·¥å…·</a>
+			</div>
+		</header>
+
+		<button class="mdui-fab mdui-fab-fixed" id="like"><i class="mdui-icon material-icons">thumb_up</i></button>	
 		
+		<div class="mdui-drawer" id="main-drawer">
+			<div class="mdui-list" mdui-collapse="{accordion: true}" style="margin-bottom: 76px;">
+				<li class="mdui-list-item mdui-ripple">
+					<i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i>
+					<div class="mdui-list-item-content">
+						<a href="https://rmpai.com" class="mdui-ripple">å›åˆ°é¦–é¡µ</a>
+					</div>
+					</div>			
+				</li>
+			</div>
+
+			<div class="mdui-panel" mdui-panel>
+				<div class="mdui-panel-item mdui-panel-item-open">
+					<div class="mdui-panel-item-body">
+						<p></p>
+						<div class="mdui-typo">
+                        <?php
+						error_reporting(0);
+						header("Refresh:10;url=cache/" . getSubstr($_FILES["file"]["name"],'','.zip') . "_packed.res");
+						// è‡ªé€‚åº”å¸ƒå±€ echo "<meta name="\"viewport"\" content="\"width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"\">"
+						$allowedExts = array("zip");
+						$temp = explode(".", $_FILES["file"]["name"]);
+						echo $_FILES["file"]["size"];
+						$extension = end($temp);     // è·å–æ–‡ä»¶åç¼€å
+						if ((($_FILES["file"]["type"] == "application/zip")
+						|| ($_FILES["file"]["type"] == "application/zip")
+						|| ($_FILES["file"]["type"] == "application/x-zip-compressed")
+						|| ($_FILES["file"]["type"] == "image/jpg")
+						|| ($_FILES["file"]["type"] == "image/pjpeg")
+						|| ($_FILES["file"]["type"] == "image/x-png")
+						|| ($_FILES["file"]["type"] == "image/png"))
+						&& ($_FILES["file"]["size"] < 2*1024*1024)   // å°äº 2MB
+						&& in_array($extension, $allowedExts))
+						{
+    						if ($_FILES["file"]["error"] > 0)
+    						{
+        						echo "é”™è¯¯ï¼š: " . $_FILES["file"]["error"] . "<br>";
+    						}
+    						else
+    						{
+        						echo "ä¸Šä¼ æ–‡ä»¶å: " . $_FILES["file"]["name"] . "<br>";
+        						echo "æœåŠ¡å™¨æ­£åœ¨å¤„ç†ä½ çš„æ–‡ä»¶ï¼Œç¨åä¼šè‡ªåŠ¨ä¸‹è½½zipå‹ç¼©åŒ…ï¼" . "<br>";
         
-        
-        // ÅĞ¶Ïµ±ÆÚÄ¿Â¼ÏÂµÄ upload Ä¿Â¼ÊÇ·ñ´æÔÚ¸ÃÎÄ¼ş
-        // Èç¹ûÃ»ÓĞ upload Ä¿Â¼£¬ÄãĞèÒª´´½¨Ëü£¬upload Ä¿Â¼È¨ÏŞÎª 777
-        if (file_exists("upload/" . $_FILES["file"]["name"]))
-        {
-            echo $_FILES["file"]["name"] . " ÎÄ¼şÒÑ¾­´æÔÚ¡£ ";
-        }
-        else
-        {
-            // Èç¹û upload Ä¿Â¼²»´æÔÚ¸ÃÎÄ¼şÔò½«ÎÄ¼şÉÏ´«µ½ upload Ä¿Â¼ÏÂ
-            move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
-            echo "ÎÄ¼ş´æ´¢ÔÚ: " . "upload/" . $_FILES["file"]["name"];
-			echo "<br>";
-			echo "ÇëÄÍĞÄµÈ´ıÔ¼10Ãë<br>";
-        }
-    }
-}
-else
-{
-    echo "·Ç·¨µÄÎÄ¼ş¸ñÊ½";
-	echo $_FILES["file"]["type"];
-}
-getSubstr($_FILES["file"]["name"],'','.res');
+        						// åˆ¤æ–­å½“æœŸç›®å½•ä¸‹çš„ upload ç›®å½•æ˜¯å¦å­˜åœ¨è¯¥æ–‡ä»¶
+        						// å¦‚æœæ²¡æœ‰ upload ç›®å½•ï¼Œä½ éœ€è¦åˆ›å»ºå®ƒï¼Œupload ç›®å½•æƒé™ä¸º 777
+        						if (file_exists("upload/" . $_FILES["file"]["name"]))
+        						{
+            						echo $_FILES["file"]["name"] . " æ–‡ä»¶å·²ç»å­˜åœ¨ã€‚ ";
+        						}
+        						else
+        						{
+            						// å¦‚æœ upload ç›®å½•ä¸å­˜åœ¨è¯¥æ–‡ä»¶åˆ™å°†æ–‡ä»¶ä¸Šä¼ åˆ° upload ç›®å½•ä¸‹
+            						move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
+            						echo "æ–‡ä»¶å­˜å‚¨åœ¨: " . "upload/" . $_FILES["file"]["name"];
+									echo "<br>";
+									echo "è¯·è€å¿ƒç­‰å¾…çº¦10ç§’<br>";
+        						}
+    						}
+						}
+						else
+						{
+    						echo "éæ³•çš„æ–‡ä»¶æ ¼å¼";
+							echo $_FILES["file"]["type"];
+						}
+						getSubstr($_FILES["file"]["name"],'','.res');
  
-/*ÒÔÏÂÊÇÈ¡ÖĞ¼äÎÄ±¾µÄº¯Êı 
-  getSubstr=µ÷ÓÃÃû³Æ
-  $str=Ô¤È¡È«ÎÄ±¾ 
-  $leftStr=×ó±ßÎÄ±¾
-  $rightStr=ÓÒ±ßÎÄ±¾
-*/
-function getSubstr($str, $leftStr, $rightStr)
-{
-    $left = strpos($str, $leftStr);
-    //echo '×ó±ß:'.$left;
-    $right = strpos($str, $rightStr,$left);
-    //echo '<br>ÓÒ±ß:'.$right;
-    if($left < 0 or $right < $left) return '';
-    return substr($str, $left + strlen($leftStr), $right-$left-strlen($leftStr));
-}
-?>
+						function getSubstr($str, $leftStr, $rightStr)
+						{
+    						$left = strpos($str, $leftStr);
+    						//echo 'å·¦è¾¹:'.$left;
+    						$right = strpos($str, $rightStr,$left);
+    						//echo '<br>å³è¾¹:'.$right;
+    						if($left < 0 or $right < $left) return '';
+    						return substr($str, $left + strlen($leftStr), $right-$left-strlen($leftStr));
+						}
+						?>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="mdui-progress">
+            <div class="mdui-progress-indeterminate"></div>
+            </div>
+        </div>
+	</body>
+	<script src="https://cdn.bootcss.com/mdui/0.4.2/js/mdui.min.js"></script>
+	<script src="./js/like.js"></script>
+</html>
