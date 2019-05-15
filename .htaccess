@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^rmpai.com [NC]
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
