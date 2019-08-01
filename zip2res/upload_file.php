@@ -14,7 +14,7 @@
 		<header class="mdui-appbar mdui-appbar-fixed">
 			<div class="mdui-toolbar mdui-color-theme">
 				<span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#main-drawer', swipe: true}"><i class="mdui-icon material-icons">menu</i></span>
-				<a href="https://rmpai.com" target="_blank" class="mdui-typo-headline mdui-hidden-xs">米环交流会 - RES反编译工具</a>
+				<a href="/" target="_blank" class="mdui-typo-headline mdui-hidden-xs">米环交流会 - RES反编译工具</a>
 			</div>
 		</header>
 
@@ -25,7 +25,7 @@
 				<li class="mdui-list-item mdui-ripple">
 					<i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i>
 					<div class="mdui-list-item-content">
-						<a href="https://rmpai.com" class="mdui-ripple">回到首页</a>
+						<a href="/" class="mdui-ripple">回到首页</a>
 					</div>
 					</div>			
 				</li>
@@ -106,5 +106,5 @@
         </div>
 	</body>
 	<script src="https://cdn.bootcss.com/mdui/0.4.2/js/mdui.min.js"></script>
-	<script src="./js/like.js"></script>
+	<script src="/js/like.js"></script>
 </html>
